@@ -1,7 +1,8 @@
 # **bTools - Plugins for Unity**  
 ## Transform
 
-Improvements for the default Unity Transform component.
+**Improvements for the default Unity Transform component.**  
+*Does not require bTools Core*
 
 ### Features
 - Reset single fields or position/rotation/scale with a middle mouse click
