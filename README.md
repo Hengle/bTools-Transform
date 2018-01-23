@@ -1,7 +1,20 @@
-# **bTools** - Transform
+# **bTools - Plugins for Unity**  
+## Transform
 
-Part of bTools.
+Improvements for the default Unity Transform component.
 
-API and Documentation at https://blobinet.github.io/bTools/
+### Features
+- Reset single fields or position/rotation/scale with a middle mouse click
+- Modify scale as a single value
+- Copy/Paste position/rotation/scale individually
+- Save snapshots of the transform and load them later (e.g for checkpoints)
+- View world space coordinates
+- Various tools to distribute, align, add noise etc...
 
-Please feel free to post issues, pull requests and make suggestions !
+![image](https://i.imgur.com/TA7ECxQ.png)
+
+![image](https://i.imgur.com/GIG7ns4.png)
+
+For more information, check out the [API and Documentation](https://blobinet.github.io/bTools/)
+
+If you encounter any bugs or have any suggestions, please post an issue !
