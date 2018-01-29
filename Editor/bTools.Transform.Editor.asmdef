@@ -1,0 +1,13 @@
+{
+    "name": "bTools.Transform.Editor",
+    "references": [
+        "bTools.Transform",
+        "bTools.CodeExtensions",
+        "bTools.CodeExtensions.Editor",
+        "bTools.Core.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}

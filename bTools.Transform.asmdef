@@ -1,0 +1,8 @@
+{
+    "name": "bTools.Transform",
+    "references": [
+        "bTools.CodeExtensions"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}
