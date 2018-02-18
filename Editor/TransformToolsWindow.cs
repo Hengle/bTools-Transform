@@ -44,6 +44,13 @@ namespace bTools.TransformComponent
         bool replaceCopyPos = true;
         bool replaceCopyRot = true;
         bool replaceCopyScl = false;
+
+        //Pilot Section
+        bool pilotFoldout;
+        string pilotFoldoutText;
+        bool isPiloting;
+        Transform pilotedTransform;
+        GameObject originalCameraPos;
         #endregion
 
         [MenuItem("bTools/Transform/Transform Tools Window", false, 1400)]
@@ -119,6 +126,16 @@ namespace bTools.TransformComponent
             if (replaceFoldout)
             {
                 DrawReplaceSection();
+            }
+
+            GUILayout.Space(2);
+            EditorGUIUtility.labelWidth = 9999;
+            pilotFoldoutText = pilotFoldout ? "▼Pilot" : "►Pilot";
+            pilotFoldout = EditorGUILayout.Foldout(pilotFoldout, pilotFoldoutText, true, EditorStyles.boldLabel);
+            EditorGUIUtility.labelWidth = 0;
+            if (pilotFoldout)
+            {
+                DrawPilotSection();
             }
 
             EditorGUILayout.EndScrollView();
@@ -221,7 +238,7 @@ namespace bTools.TransformComponent
             if (GUILayout.Button("Apply align", GUILayout.Width(84), GUILayout.Height(18)))
             {
                 Undo.RecordObjects(Selection.transforms, "Transform align");
-                TransformTools.AlignTransforms(targetAlignTransform, Selection.transforms, alignOptions);
+                TransformTools.AlignTransform(targetAlignTransform, Selection.transforms, alignOptions);
             }
 
             if (GUILayout.Button("Look At", GUILayout.Width(84), GUILayout.Height(18)))
@@ -710,6 +727,57 @@ namespace bTools.TransformComponent
                     }
                 }
             }
+        }
+
+        //Pilot
+        void DrawPilotSection()
+        {
+            EditorGUILayout.LabelField("Object to pilot", EditorStyles.boldLabel, GUILayout.Width(180));
+
+            pilotedTransform = EditorGUILayout.ObjectField(pilotedTransform, typeof(Transform), true, GUILayout.Width(180)) as Transform;
+
+            if (isPiloting && pilotedTransform == null) StopPiloting();
+
+            if (isPiloting)
+            {
+                if (GUILayout.Button("Stop Piloting", GUILayout.Width(180))) StopPiloting();
+            }
+            else
+            {
+                using (new EditorGUI.DisabledGroupScope(pilotedTransform == null))
+                {
+                    if (GUILayout.Button("Start Piloting", GUILayout.Width(180))) StartPiloting();
+                }
+            }
+        }
+
+        void StartPiloting()
+        {
+            isPiloting = true;
+            originalCameraPos = new GameObject("OriginalCamPos");
+            originalCameraPos.hideFlags = HideFlags.HideAndDontSave;
+            TransformTools.AlignTransform(SceneView.lastActiveSceneView.camera.transform, originalCameraPos.transform, true, true, false);
+
+            SceneView.lastActiveSceneView.AlignViewToObject(pilotedTransform);
+
+            EditorApplication.update -= DoPiloting;
+            EditorApplication.update += DoPiloting;
+        }
+
+        void DoPiloting()
+        {
+            if (pilotedTransform == null) StopPiloting();
+            pilotedTransform.rotation = SceneView.lastActiveSceneView.camera.transform.rotation;
+            pilotedTransform.position = SceneView.lastActiveSceneView.camera.transform.position;
+        }
+
+        void StopPiloting()
+        {
+            isPiloting = false;
+            EditorApplication.update -= DoPiloting;
+
+            SceneView.lastActiveSceneView.AlignViewToObject(originalCameraPos.transform);
+            DestroyImmediate(originalCameraPos);
         }
 
         //Shortcut calls
