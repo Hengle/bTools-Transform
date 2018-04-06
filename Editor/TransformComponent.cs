@@ -45,14 +45,14 @@ namespace bTools.TransformComponent
 			#region Additional Menus
 			GUILayout.Space( 4 ); // Save/Load
 			EditorGUILayout.BeginHorizontal();
-			if ( GUILayout.Button( string.Empty, Ressources.bToolsSkin.customStyles[2], GUILayout.Width( 16 ), GUILayout.Height( 16 ) ) )
+			if ( GUILayout.Button( string.Empty, bToolsResources.bToolsSkin.customStyles[2], GUILayout.Width( 16 ), GUILayout.Height( 16 ) ) )
 			{
 				Rect popupRect = new Rect( Event.current.mousePosition.x, -Event.current.mousePosition.y, 250, 110 );
 				PopupWindow.Show( popupRect, new TransformSavePopup( targetTransform.gameObject ) );
 				GUIUtility.ExitGUI();
 			}
 			GUILayout.Space( 8 ); // Global reset
-			if ( GUILayout.Button( string.Empty, Ressources.bToolsSkin.customStyles[0], GUILayout.Width( 16 ), GUILayout.Height( 16 ) ) )
+			if ( GUILayout.Button( string.Empty, bToolsResources.bToolsSkin.customStyles[0], GUILayout.Width( 16 ), GUILayout.Height( 16 ) ) )
 			{
 				localPosition.vector3Value = Vector3.zero;
 				localEulerHint.vector3Value = Vector3.zero;
@@ -60,7 +60,7 @@ namespace bTools.TransformComponent
 				localScale.vector3Value = Vector3.one;
 			}
 			GUILayout.Space( 8 ); // Transform tools
-			if ( GUILayout.Button( string.Empty, Ressources.bToolsSkin.customStyles[3], GUILayout.Width( 16 ), GUILayout.Height( 16 ) ) )
+			if ( GUILayout.Button( string.Empty, bToolsResources.bToolsSkin.customStyles[3], GUILayout.Width( 16 ), GUILayout.Height( 16 ) ) )
 			{
 				TransformToolsWindow.OpenWindow();
 				GUIUtility.ExitGUI();
@@ -436,7 +436,7 @@ namespace bTools.TransformComponent
 			#endregion
 
 			EditorGUI.showMixedValue = false;
-			combinedScale = EditorGUILayout.Toggle( combinedScale, Ressources.bToolsSkin.customStyles[1], GUILayout.Width( 16 ), GUILayout.Height( 16 ) );
+			combinedScale = EditorGUILayout.Toggle( combinedScale, bToolsResources.bToolsSkin.customStyles[1], GUILayout.Width( 16 ), GUILayout.Height( 16 ) );
 			EditorPrefs.SetBool( "bToolsCombinedScale", combinedScale );
 
 			if ( !combinedScale )
