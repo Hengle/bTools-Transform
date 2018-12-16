@@ -16,6 +16,6 @@
 
 ![image](https://i.imgur.com/GIG7ns4.png)
 
-For more information, check out the [API and Documentation](https://blobinet.github.io/bTools/)
+For more information, check out the [API and Documentation](https://btools.gitlab.io/btools-documentation-pages/)
 
-If you encounter any bugs or have any suggestions, please post an issue !
+If you encounter any bugs or have any suggestions, please post an issue or merge request !
