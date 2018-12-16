@@ -4,6 +4,8 @@
 **Improvements for the default Unity Transform component.**  
 *Requires bTools Core*
 
+Migrated to [GitLab](https://gitlab.com/btools/bTools), but mirrored on GitHub
+
 ### Features
 - Reset single fields or position/rotation/scale with a middle mouse click
 - Modify scale as a single value
@@ -18,4 +20,4 @@
 
 For more information, check out the [API and Documentation](https://btools.gitlab.io/btools-documentation-pages/)
 
-If you encounter any bugs or have any suggestions, please post an issue or merge request !
+If you encounter any bugs or have any suggestions, please post an issue or merge request (on GitLab) !
