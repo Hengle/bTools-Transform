@@ -3,11 +3,16 @@
     "references": [
         "bTools.Transform",
         "bTools.CodeExtensions",
-        "bTools.CodeExtensions.Editor",
-        "bTools.Core.Editor"
+        "bTools.CodeExtensions.Editor"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor"
     ],
-    "excludePlatforms": []
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
 }

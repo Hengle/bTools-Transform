@@ -57,7 +57,7 @@ namespace bTools.TransformComponent
         public static void OpenWindow()
         {
             var window = GetWindow<TransformToolsWindow>(string.Empty, true);
-            window.titleContent = new GUIContent("Transform", bToolsResources.bToolsSkin.FindStyle("tools").normal.background, "General tools for Transforms");
+            window.titleContent = new GUIContent("Transform", "General tools for Transforms");
             window.minSize = new Vector2(231, 100);
         }
 
